@@ -13,14 +13,16 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
   },
   "dependencies": {
-    "bootstrap": "^4.3.1",
+    "bootstrap": "^4.4.1",
     "gatsby": "^2.13.73",
-    "gatsby-plugin-sass": "^2.1.14",
+    "gatsby-plugin-sass": "^2.1.26",
     "jquery": "^3.4.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.0",
     "popper.js": "^1.15.0",
     "react": "^16.9.0",
+    "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.9.0",
+    "react-icons": "^3.8.0",
     "styled-components": "^5.0.0-beta.8"
   },
   "devDependencies": {
