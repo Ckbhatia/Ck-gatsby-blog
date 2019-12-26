@@ -1,0 +1,18 @@
+body {
+  font-family: $font_family, sans-serif;
+  font-size: 16px;
+  color: $text_color;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.wrapper {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}

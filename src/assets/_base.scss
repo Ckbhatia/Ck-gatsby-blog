@@ -1,0 +1,97 @@
+// ================================
+// General style
+// ================================
+
+// Root Element
+html {
+  font-size: 14px;
+  font-family: $font-family;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+// Align items
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+
+// Form elements
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.8rem 0.8rem;
+  border: 0;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+// Responsive image
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// Center Elemets within its parent
+.center-child {
+  display: grid;
+  place-items: center;
+}
+
+// Bacground colors for sections
+.bg-primary {
+  background: $secondary_background;
+}
+
+// cleafix, cotaining floats
+.clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// basic flexbox class
+.flex-between {
+  @extend %flex-between;
+}
+
+.flex-center {
+  @extend %flex-center;
+}
+
+.flex-start {
+  @extend %flex-start;
+}
+
+@media all and (max-width: 992px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media all and (max-width: 600px) {
+  html {
+    font-size: 10px;
+  }
+}
