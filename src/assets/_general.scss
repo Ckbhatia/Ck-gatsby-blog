@@ -16,3 +16,77 @@ body {
   margin: 0 auto;
   padding: 0 1rem;
 }
+
+/** Custom CSS **/
+
+// Container background
+.container-bg-light {
+  background-color: secondary_background;
+}
+
+.container-bg-dark {
+  background-color: $background-dark;
+}
+
+// Just headers
+.header-text-light {
+  color: $text_light_dark;
+}
+
+.header-text-dark {
+  color: $secondary_light;
+}
+
+// It is for all type of headings ( light mode )
+.heading-light {
+  color: $text_color;
+}
+
+.heading-dark {
+  color: $text-color-secondary;
+}
+
+// Sub heading
+.sub-heading-text-light {
+  color: $text_light_dark;
+}
+
+.sub-heading-text-dark {
+  color: $secondary_light;
+}
+
+// Just for paragraph text
+.para-text-light {
+  color: $text_light_dark;
+}
+
+.para-text-dark {
+  color: $text_color_secondary;
+}
+
+// Just for text
+.text-light {
+  color: $text_light_dark;
+}
+
+.text-dark {
+  color: $text_color_secondary;
+}
+
+// Buttons
+.btn-light {
+  color: $dark_black;
+}
+
+.btn-dark {
+  color: $primary_white;
+}
+
+// Footer
+.footer-bg-light {
+  background-color: #f1f2fa;
+}
+
+.footer-bg-dark {
+  background-color: $background-secondary;
+}
