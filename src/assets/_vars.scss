@@ -5,16 +5,18 @@
 $font_family: "Roboto", sans-serif;
 $primary_color: #12ab87;
 $secondary_color: #ffffff;
-$text_color: #3b3e4d;
-$text_color_secondary: #3b3e4d;
+$background-dark: #131217;
+$background-secondary: #232129;
+$text_color: #2b2d38;
+$text_color_secondary: rgba(245, 245, 245, 0.9);
 $text_color_teritiary: #777777;
 $secondary_background: #f7f7f7;
 $dark_black: #080808;
 $primary_white: #fff;
-$secondary_light: #01112f;
-$secondary_dark: #010d26;
-$text_light_dark: #7e7e7e;
-$textDark: #565555;
+$secondary_light: #dddddd;
+$secondary_dark: #1c1e29;
+$text_light_dark: #3b3e4d;
+$textDark: #080808;
 
 // =========================
 // Mixins
