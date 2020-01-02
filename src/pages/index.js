@@ -11,15 +11,15 @@ export default () => {
 
   useEffect(() => {
     if (!isDay) {
-      document.body.style.backgroundColor = "black";
+      document.getElementById("___gatsby").style.backgroundColor = "#131217";
     }
     return () => {
-      document.body.style.backgroundColor = "white";
+      document.getElementById("___gatsby").style.backgroundColor = "#fafafc";
     };
   }, [isDay]);
 
   return (
-    <div className={`main-app ${isDay ? "day" : "dark"}`}>
+    <div className={`main-app ${isDay ? "light" : "dark"}`}>
       <Context.Provider value={{ isDay, toggleDay }}>
         <Layout>{/* Content or components */}</Layout>
       </Context.Provider>
