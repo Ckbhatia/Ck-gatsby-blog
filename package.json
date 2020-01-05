@@ -15,6 +15,7 @@
   "dependencies": {
     "bootstrap": "^4.4.1",
     "gatsby": "^2.13.73",
+    "gatsby-cli": "^2.8.22",
     "gatsby-plugin-sass": "^2.1.26",
     "jquery": "^3.4.1",
     "node-sass": "^4.13.0",
