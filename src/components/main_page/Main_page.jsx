@@ -6,6 +6,7 @@ import Loader from "../Loader";
 const Latestpost = lazy(() => import("./Latest_post"));
 const SideBar = lazy(() => import("./Sidebar"));
 const Articles = lazy(() => import("./Articles"));
+const Subscribe = lazy(() => import("./Subscribe"));
 
 export default function MainPage() {
   return (
@@ -17,6 +18,9 @@ export default function MainPage() {
         </section>
         <section className="articles-section">
           <Articles />
+        </section>
+        <section className="form-section">
+          <Subscribe />
         </section>
       </Suspense>
     </Section>
@@ -30,7 +34,6 @@ const Section = styled.section`
     grid-gap: 4rem;
     align-items: center;
     @media screen and (max-width: 992px) {
-      // grid-template-columns: 57%;
       grid-template-columns: 70%;
       justify-content: center;
     }
@@ -43,5 +46,8 @@ const Section = styled.section`
   }
   .articles-section {
     margin-top: 4rem;
+  }
+  .form-section {
+    margin: 4rem 0;
   }
 `;
