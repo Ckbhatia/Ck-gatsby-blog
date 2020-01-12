@@ -1,28 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { lazy, Suspense } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-// import "bootstrap/dist/css/bootstrap-theme.css"
 import "../assets/main.scss";
+import Mode from "../components/Mode";
 import Layout from "../components/Layout";
+import Loader from "../components/Loader";
 
-import Context from "../context";
+const MainPage = lazy(() => import("../components/main_page/Main_page"));
 
 export default () => {
-  const [isDay, toggleDay] = useState(true);
-
-  useEffect(() => {
-    if (!isDay) {
-      document.getElementById("___gatsby").style.backgroundColor = "#131217";
-    }
-    return () => {
-      document.getElementById("___gatsby").style.backgroundColor = "#fafafc";
-    };
-  }, [isDay]);
-
   return (
-    <div className={`main-app ${isDay ? "light" : "dark"}`}>
-      <Context.Provider value={{ isDay, toggleDay }}>
-        <Layout>{/* Content or components */}</Layout>
-      </Context.Provider>
+    <div className="main-app-container">
+      <Mode>
+        <Layout>
+          <Suspense fallback={<Loader />}>
+            <MainPage />
+          </Suspense>
+        </Layout>
+      </Mode>
     </div>
   );
 };
