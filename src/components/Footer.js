@@ -1,18 +1,29 @@
 import React, { useContext } from "react";
+import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 import Context from "../context";
 
 export default function Footer() {
-  const value = useContext(Context);
-  const { isDay } = value;
+  const { isDay } = useContext(Context);
+
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          author
+        }
+      }
+    }
+  `);
 
   return (
     <FooterElement
       className={`footer-main-container footer-bg-${isDay ? "light" : "dark"}`}
     >
       <div className="footer-container">
-        {/* Add dynamic text */}
-        <span className="footer-text">2020 @ chetan's blog</span>
+        <span className="footer-text">
+          2020 @ {data.site.siteMetadata.author}'s blog
+        </span>
       </div>
     </FooterElement>
   );

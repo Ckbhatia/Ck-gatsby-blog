@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { graphql, useStaticQuery } from "gatsby";
 import {
   Navbar,
   Nav,
@@ -15,8 +16,17 @@ import styled from "styled-components";
 import Context from "../context";
 
 export default function Header() {
-  const value = useContext(Context);
-  const { isDay, toggleDay } = value;
+  const { isDay, toggleDay } = useContext(Context);
+
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `);
 
   return (
     <Div className="navbar-main-container">
@@ -28,7 +38,8 @@ export default function Header() {
               isDay ? "light" : "dark"
             }`}
           >
-            chetan's <span className="header-blog-text">blog</span>
+            {data.site.siteMetadata.title}'s{" "}
+            <span className="header-blog-text">blog</span>
           </h1>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -153,5 +164,10 @@ const Div = styled.div`
     border: none;
     outline: none;
     margin: 0.8rem 0;
+    &:focus {
+      outline: none;
+      box-shadow: none;
+      border: none;
+    }
   }
 `;
