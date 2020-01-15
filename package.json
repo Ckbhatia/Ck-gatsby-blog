@@ -17,6 +17,8 @@
     "gatsby": "^2.13.73",
     "gatsby-cli": "^2.8.22",
     "gatsby-plugin-sass": "^2.1.26",
+    "gatsby-source-filesystem": "^2.1.46",
+    "gatsby-transformer-remark": "^2.6.48",
     "jquery": "^3.4.1",
     "node-sass": "^4.13.0",
     "popper.js": "^1.15.0",
