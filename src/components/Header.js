@@ -61,7 +61,13 @@ export default function Header() {
             <Button variant="outline-success">
               <GoSearch />
             </Button>
-            <FormControl type="text" placeholder="SEARCH" className="mr-sm-2" />
+            <FormControl
+              type="text"
+              placeholder="SEARCH"
+              className={`mr-sm-2 form-control form-${
+                isDay ? "light" : "dark"
+              }`}
+            />
           </Form>
           <div className="mode-toggler-container">
             {isDay ? (
@@ -95,9 +101,10 @@ const Div = styled.div`
   .navbar-main-heading-text {
     font-family: "Roboto", sans-serif;
     // font-family: "Source Serif Pro", serif;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     letter-spacing: 0.01rem;
     font-weight: 700;
+    text-transform: lowercase;
     .header-blog-text {
       color: #12ab87;
     }
@@ -156,6 +163,17 @@ const Div = styled.div`
   .form-control {
     // RESET
     box-shadow: 0 0 0;
+    border: none;
+    font-size: 0.8rem;
+    font-weight: 700;
+    &:focus {
+      border: 1px solid #89898b;
+    }
+  }
+
+  .form-dark {
+    background-color: #131217;
+    color: white;
   }
 
   // Toggle Button
