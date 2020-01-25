@@ -1,50 +1,80 @@
 import React, { useContext } from "react";
+import { Link, graphql, useStaticQuery } from "gatsby";
+import { Image } from "gatsby-image";
 import Context from "../../context";
 import styled from "styled-components";
-import "../../assets/main.scss";
 
 export default function Articles() {
   const { isDay } = useContext(Context);
 
+  const data = useStaticQuery(graphql`
+    {
+      allMarkdownRemark {
+        edges {
+          node {
+            frontmatter {
+              title
+              topic
+            }
+            html
+            excerpt
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `);
   return (
     <Div className="article-main-container">
       <ul className="article-list-container">
-        <li className="article-item-container">
-          <a href="#" className="article-item-link">
-            <div
-              className={`article-container container-bg-${
-                isDay ? "light" : "dark"
-              }`}
-            >
-              <div className="article-banner-container center-child">
-                {/* TODO: Add dynamic image url */}
-                <img
-                  src="http://tiny.cc/61thiz"
-                  alt="article"
-                  className="article-image"
-                />
-              </div>
-              <div className="article-text-container">
-                <span
-                  // Note: cate stands for category
-                  className={`article-cate-text text-${
+        {/* Get articles data dynamicaly */}
+        {data.allMarkdownRemark.edges.map((edge, i) => {
+          console.log(edge.node.frontmatter.image);
+          return (
+            <li key={i} className="article-item-container">
+              <Link
+                to={`/blog/${edge.node.fields.slug}`}
+                className="article-item-link"
+              >
+                <div
+                  className={`article-container container-bg-${
                     isDay ? "light" : "dark"
                   }`}
                 >
-                  {/* TODO: Add dynamic topic category */}
-                  JavaScript
-                </span>
-                <h4
-                  className={`article-heading heading-${
-                    isDay ? "light" : "dark"
-                  }`}
-                >
-                  What is the DOM?
-                </h4>
-              </div>
-            </div>
-          </a>
-        </li>
+                  <div className="article-banner-container center-child">
+                    {/* TODO: Add dynamic image url */}
+                    <img
+                      src="https://tinyurl.com/qvy5ln3"
+                      alt="article"
+                      className="article-image"
+                    />
+
+                    {/* <Image fluid={edge.node.frontmatter.image} /> */}
+                  </div>
+                  <div className="article-text-container">
+                    <span
+                      // Note: cate stands for category
+                      className={`article-cate-text topic-text-${
+                        isDay ? "light" : "dark"
+                      }`}
+                    >
+                      {edge.node.frontmatter.topic}
+                    </span>
+                    <h4
+                      className={`article-heading heading-${
+                        isDay ? "light" : "dark"
+                      }`}
+                    >
+                      {edge.node.frontmatter.title}
+                    </h4>
+                  </div>
+                </div>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </Div>
   );
@@ -109,5 +139,11 @@ const Div = styled.div`
     font-weight: 500;
     letter-spacing: 0.02rem;
     line-height: 2.3rem;
+  }
+  .topic-text-light {
+    color: #696969;
+  }
+  .topic-text-dark {
+    color: #969696;
   }
 `;
