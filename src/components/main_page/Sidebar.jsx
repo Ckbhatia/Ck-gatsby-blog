@@ -1,10 +1,34 @@
 import React, { useContext } from "react";
+import { Link, graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 import Context from "../../context";
 import { FaHotjar } from "react-icons/fa";
 
 export default function SideBar() {
   const { isDay } = useContext(Context);
+
+  const data = useStaticQuery(graphql`
+    {
+      allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: DESC }
+        limit: 4
+        skip: 1
+      ) {
+        edges {
+          node {
+            frontmatter {
+              title
+              topic
+            }
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `);
+
   return (
     <Aside className="aside-main-container">
       <div className="picks-container">
@@ -12,104 +36,38 @@ export default function SideBar() {
           <FaHotjar />
         </span>
         <h2 className={`picks-heading heading-${isDay ? "light" : "dark"}`}>
-          Popular Picks
+          Latest Picks
         </h2>
       </div>
       <div className="picks-list-main-container">
         <ul className="picks-list-container">
-          {/* NOTE: Limit it to four article list only and also follow DIY rule*/}
-          <li className="picks-list-item-container">
-            {/* TODO: Add dynamic url */}
-            <a href="#" className="picks-item-link">
-              <div
-                className={`picks-item-container picks-item-cont-bg-${
-                  isDay ? "light" : "dark"
-                }`}
-              >
-                <span className="picks-item-cat-container">
-                  {/* TODO: Add dynamic item category */}
-                  DevOps
-                </span>
-                <h4
-                  className={`picks-item-heading heading-${
-                    isDay ? "light" : "dark"
-                  }`}
+          {data.allMarkdownRemark.edges.map((edge, i) => {
+            return (
+              <li key={i} className="picks-list-item-container">
+                <Link
+                  to={`/blog/${edge.node.fields.slug}`}
+                  className="picks-item-link"
                 >
-                  {/* TODO: Add dynamic item category */}
-                  Don't panic when you get stuck
-                </h4>
-              </div>
-            </a>
-          </li>
-          <li className="picks-list-item-container">
-            {/* TODO: Add dynamic url */}
-            <a href="#" className="picks-item-link">
-              <div
-                className={`picks-item-container picks-item-cont-bg-${
-                  isDay ? "light" : "dark"
-                }`}
-              >
-                <span className="picks-item-cat-container">
-                  {/* TODO: Add dynamic item category */}
-                  ReactJs
-                </span>
-                <h4
-                  className={`picks-item-heading heading-${
-                    isDay ? "light" : "dark"
-                  }`}
-                >
-                  {/* TODO: Add dynamic item category */}
-                  How to optimise react web app?
-                </h4>
-              </div>
-            </a>
-          </li>
-          <li className="picks-list-item-container">
-            {/* TODO: Add dynamic url */}
-            <a href="#" className="picks-item-link">
-              <div
-                className={`picks-item-container picks-item-cont-bg-${
-                  isDay ? "light" : "dark"
-                }`}
-              >
-                <span className="picks-item-cat-container">
-                  {/* TODO: Add dynamic item category */}
-                  Javascript
-                </span>
-                <h4
-                  className={`picks-item-heading heading-${
-                    isDay ? "light" : "dark"
-                  }`}
-                >
-                  {/* TODO: Add dynamic item category */}
-                  What is DOM?
-                </h4>
-              </div>
-            </a>
-          </li>
-          <li className="picks-list-item-container">
-            {/* TODO: Add dynamic url */}
-            <a href="#" className="picks-item-link">
-              <div
-                className={`picks-item-container picks-item-cont-bg-${
-                  isDay ? "light" : "dark"
-                }`}
-              >
-                <span className="picks-item-cat-container">
-                  {/* TODO: Add dynamic item category */}
-                  ExpressJs
-                </span>
-                <h4
-                  className={`picks-item-heading heading-${
-                    isDay ? "light" : "dark"
-                  }`}
-                >
-                  {/* TODO: Add dynamic item category */}
-                  What are middlewares?
-                </h4>
-              </div>
-            </a>
-          </li>
+                  <div
+                    className={`picks-item-container picks-item-cont-bg-${
+                      isDay ? "light" : "dark"
+                    }`}
+                  >
+                    <span className="picks-item-cat-container">
+                      {edge.node.frontmatter.topic}
+                    </span>
+                    <h4
+                      className={`picks-item-heading heading-${
+                        isDay ? "light" : "dark"
+                      }`}
+                    >
+                      {edge.node.frontmatter.title}
+                    </h4>
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </Aside>
