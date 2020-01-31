@@ -72,3 +72,4 @@ yarn.lock
 
 # others
 package-lock.json
+.env.development
