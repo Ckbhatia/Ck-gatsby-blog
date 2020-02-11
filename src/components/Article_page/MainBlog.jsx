@@ -6,12 +6,19 @@ import styled from "styled-components";
 import Layout from "../Layout";
 
 const MainBlog = ({ data }) => {
-  const { title, date, author, topic } = data.markdownRemark.frontmatter;
+  const {
+    title,
+    published,
+    author,
+    topic,
+    body,
+    thumbnail,
+  } = data.contentfulBlogPost;
   return (
     <Layout>
       <Div className="main-blog-container wrapper">
-        <SideBar author={author} date={date} topic={topic} />
-        <Post title={title} data={data.markdownRemark.html} />
+        <SideBar author={author} published={published} topic={topic} />
+        <Post title={title} thumbnail={thumbnail} body={body} />
       </Div>
     </Layout>
   );
