@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import Img from "gatsby-image";
 import Context from "../../context";
 import { Link, graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
@@ -8,30 +9,36 @@ export default function Latestpost() {
 
   const data = useStaticQuery(graphql`
     {
-      allMarkdownRemark(
-        sort: { fields: [frontmatter___date], order: DESC }
+      allContentfulBlogPost(
+        sort: { order: DESC, fields: published }
         limit: 1
       ) {
         edges {
           node {
-            frontmatter {
-              title
-              date
-              topic
+            author
+            slug
+            thumbnail {
+              fluid(maxWidth: 1600, maxHeight: 800) {
+                srcSet
+                srcWebp
+                aspectRatio
+              }
             }
-            html
-            excerpt
-            fields {
-              slug
-            }
+            title
+            topic
+            published(formatString: "Do, MMMM YYYY")
           }
         }
       }
     }
   `);
 
-  const { title, topic } = data.allMarkdownRemark.edges[0].node.frontmatter;
-  const slug = data.allMarkdownRemark.edges[0].node.fields.slug;
+  const {
+    title,
+    topic,
+    slug,
+    thumbnail,
+  } = data.allContentfulBlogPost.edges[0].node;
   return (
     <>
       <Article className="latest-post-main-container">
@@ -42,12 +49,7 @@ export default function Latestpost() {
             }`}
           >
             <div className="latest-post-img-container">
-              {/* TODO: Add dynamic image url */}
-              <img
-                src="https://tinyurl.com/smxee9n"
-                alt="latest-post"
-                className="latest-post-img"
-              />
+              <Img fluid={thumbnail.fluid} alt={"latest post thumbnail"} />
             </div>
             <div className="latest-post-header-container">
               <span
@@ -102,6 +104,8 @@ const Article = styled.article`
     cursor: pointer;
     .latest-post-img {
       width: 100%;
+    }
+    picture > img {
       border-radius: 10px 10px 0 0;
     }
     .latest-post-header-container {

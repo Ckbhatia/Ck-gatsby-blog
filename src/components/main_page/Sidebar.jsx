@@ -9,20 +9,16 @@ export default function SideBar() {
 
   const data = useStaticQuery(graphql`
     {
-      allMarkdownRemark(
-        sort: { fields: [frontmatter___date], order: DESC }
-        limit: 4
+      allContentfulBlogPost(
+        sort: { order: DESC, fields: published }
         skip: 1
+        limit: 4
       ) {
         edges {
           node {
-            frontmatter {
-              title
-              topic
-            }
-            fields {
-              slug
-            }
+            slug
+            title
+            topic
           }
         }
       }
@@ -41,11 +37,11 @@ export default function SideBar() {
       </div>
       <div className="picks-list-main-container">
         <ul className="picks-list-container">
-          {data.allMarkdownRemark.edges.map((edge, i) => {
+          {data.allContentfulBlogPost.edges.map((edge, i) => {
             return (
               <li key={i} className="picks-list-item-container">
                 <Link
-                  to={`/blog/${edge.node.fields.slug}`}
+                  to={`/blog/${edge.node.slug}`}
                   className="picks-item-link"
                 >
                   <div
@@ -54,14 +50,14 @@ export default function SideBar() {
                     }`}
                   >
                     <span className="picks-item-cat-container">
-                      {edge.node.frontmatter.topic}
+                      {edge.node.topic}
                     </span>
                     <h4
                       className={`picks-item-heading heading-${
                         isDay ? "light" : "dark"
                       }`}
                     >
-                      {edge.node.frontmatter.title}
+                      {edge.node.title}
                     </h4>
                   </div>
                 </Link>
