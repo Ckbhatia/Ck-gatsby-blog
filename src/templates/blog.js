@@ -15,14 +15,21 @@ export default function blog({ data }) {
 
 export const query = graphql`
   query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      frontmatter {
-        title
-        date
-        author
-        topic
+    contentfulBlogPost(slug: { eq: $slug }) {
+      title
+      published(formatString: "Do, MMMM YYYY")
+      topic
+      author
+      thumbnail {
+        fluid(maxWidth: 1600, maxHeight: 800) {
+          srcSet
+          srcWebp
+          aspectRatio
+        }
       }
-      html
+      body {
+        json
+      }
     }
   }
 `;
