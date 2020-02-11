@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link, graphql, useStaticQuery } from "gatsby";
-import { Image } from "gatsby-image";
+import Img from "gatsby-image";
 import Context from "../../context";
 import styled from "styled-components";
 
@@ -8,34 +8,36 @@ export default function Articles() {
   const { isDay } = useContext(Context);
 
   const data = useStaticQuery(graphql`
-    {
-      allMarkdownRemark {
+    query {
+      allContentfulBlogPost(skip: 5, sort: { fields: published, order: DESC }) {
         edges {
           node {
-            frontmatter {
-              title
-              topic
+            title
+            thumbnail {
+              fluid(maxWidth: 1600, maxHeight: 800) {
+                srcSet
+                srcWebp
+                aspectRatio
+              }
             }
-            html
-            excerpt
-            fields {
-              slug
-            }
+            slug
+            topic
+            published(formatString: "Do, MMMM YYYY")
           }
         }
       }
     }
   `);
+
   return (
     <Div className="article-main-container">
       <ul className="article-list-container">
         {/* Get articles data dynamicaly */}
-        {data.allMarkdownRemark.edges.map((edge, i) => {
-          console.log(edge.node.frontmatter.image);
+        {data.allContentfulBlogPost.edges.map((edge, i) => {
           return (
             <li key={i} className="article-item-container">
               <Link
-                to={`/blog/${edge.node.fields.slug}`}
+                to={`/blog/${edge.node.slug}`}
                 className="article-item-link"
               >
                 <div
@@ -45,13 +47,16 @@ export default function Articles() {
                 >
                   <div className="article-banner-container center-child">
                     {/* TODO: Add dynamic image url */}
-                    <img
+                    {/* <img
                       src="https://tinyurl.com/qvy5ln3"
                       alt="article"
                       className="article-image"
-                    />
+                    /> */}
 
-                    {/* <Image fluid={edge.node.frontmatter.image} /> */}
+                    <Img
+                      fluid={edge.node.thumbnail.fluid}
+                      alt={"article thumbnail"}
+                    />
                   </div>
                   <div className="article-text-container">
                     <span
@@ -60,14 +65,14 @@ export default function Articles() {
                         isDay ? "light" : "dark"
                       }`}
                     >
-                      {edge.node.frontmatter.topic}
+                      {edge.node.topic}
                     </span>
                     <h4
                       className={`article-heading heading-${
                         isDay ? "light" : "dark"
                       }`}
                     >
-                      {edge.node.frontmatter.title}
+                      {edge.node.title}
                     </h4>
                   </div>
                 </div>
