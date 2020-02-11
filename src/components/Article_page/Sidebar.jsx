@@ -3,10 +3,9 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 import { FaTwitter, FaLinkedinIn, FaFacebookF } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-
 import Context from "../../context";
 
-export default function Sidebar({ author, date, topic }) {
+export default function Sidebar({ author, published, topic }) {
   const { isDay } = useContext(Context);
 
   return (
@@ -32,14 +31,9 @@ export default function Sidebar({ author, date, topic }) {
           </Link>
         </div>
         <div className="post-time-container">
-          <span className="post-time-text">
-            {/* Wrote on <br />
-            January 8, 2020 */}
-            {date}
-          </span>
+          <span className="post-time-text">{published}</span>
         </div>
         <div className="post-cate-container">
-          {/* TODO: category should be loaded dynamically */}
           <Link to="/" rel="noopener noreferrer" className="post-cate-link">
             <span className="post-cate-text">{topic}</span>
           </Link>
