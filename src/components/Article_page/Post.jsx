@@ -1,10 +1,21 @@
 import React, { useContext } from "react";
+import Img from "gatsby-image";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Context from "../../context";
 import styled from "styled-components";
 
-export default function Post({ title, data }) {
+export default function Post({ title, body, thumbnail }) {
   const { isDay } = useContext(Context);
 
+  const options = {
+    renderNode: {
+      "embedded-asset-block": node => {
+        const alt = node.data.target.fields.title["en-US"];
+        const url = node.data.target.fields.file["en-US"].url;
+        return <img src={url} alt={alt} />;
+      },
+    },
+  };
   return (
     <Article className="post-container">
       <div className="post-heading-container">
@@ -12,18 +23,16 @@ export default function Post({ title, data }) {
           {title}
         </h1>
       </div>
-      <div
-        className="post-image-container"
-        // dangerouslySetInnerHTML={{ __html: hero }}
-      >
-        {/* <img src="http://tiny.cc/61thiz" alt="post" className="post-image" /> */}
+      <div className="post-image-container">
+        <Img fluid={thumbnail.fluid} alt={"post thumbnail"} />
       </div>
       <div
         className={`post-paragraph-container para-cont-${
           isDay ? "light" : "dark"
         }`}
-        dangerouslySetInnerHTML={{ __html: data }}
-      ></div>
+      >
+        {documentToReactComponents(body.json, options)}
+      </div>
     </Article>
   );
 }
@@ -47,18 +56,11 @@ const Article = styled.article`
       border-radius: 10px;
     }
   }
-  .gatsby-resp-image-image {
-    // width: 100%;
+
+  picture > img {
     border-radius: 10px;
   }
 
-  // .post-paragraph-container {
-  //   margin: 1rem 0;
-  //   .post-paragraph {
-  //     font-size: 1.3rem;
-  //     font-weight: 400;
-  //   }
-  // }
   .post-paragraph-container {
     margin: 1rem 0;
     p {
