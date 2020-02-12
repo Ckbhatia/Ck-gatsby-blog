@@ -2,10 +2,12 @@ import React from "react";
 import { graphql } from "gatsby";
 import MainBlog from "../components/Article_page/MainBlog";
 import Mode from "../components/Mode";
+import Head from "../components/Head";
 
 export default function blog({ data }) {
   return (
     <Mode>
+      <Head title={data.contentfulBlogPost.title} />
       <div className="blog-container">
         <MainBlog data={data} />
       </div>
