@@ -1,4 +1,5 @@
 {
+  "homepage": "https://ckbhatia.github.com/blog",
   "name": "gatsby-starter-hello-world",
   "private": true,
   "description": "A simplified bare-bones starter for Gatsby",
@@ -18,6 +19,7 @@
     "gatsby": "^2.13.73",
     "gatsby-cli": "^2.8.29",
     "gatsby-image": "^2.2.39",
+    "gatsby-plugin-react-helmet": "3.0.12",
     "gatsby-plugin-sass": "^2.1.26",
     "gatsby-plugin-sharp": "^2.3.13",
     "gatsby-remark-images": "^3.1.42",
@@ -31,6 +33,7 @@
     "react": "^16.9.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.9.0",
+    "react-helmet": "5.2.0",
     "react-icons": "^3.8.0",
     "styled-components": "^5.0.0-beta.8"
   },
