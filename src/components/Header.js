@@ -28,11 +28,15 @@ export default function Header() {
     }
   `);
 
+  const handleClick = () => {
+    localStorage.setItem("day", JSON.stringify(isDay));
+    toggleDay(() => !isDay);
+  };
+
   return (
     <Div className="navbar-main-container">
       <Navbar bg="transparent" expand="lg">
         <Navbar.Brand href="/">
-          {/* TODO: Add owner name dynamically */}
           <h1
             className={`navbar-main-heading-text heading-${
               isDay ? "light" : "dark"
@@ -74,7 +78,7 @@ export default function Header() {
               <button
                 aria-label="Activate dark mode"
                 title="Activate dark mode"
-                onClick={() => toggleDay(() => !isDay)}
+                onClick={handleClick}
                 className="mode-toggle-btn btn-light"
               >
                 <IoIosMoon />
@@ -83,7 +87,7 @@ export default function Header() {
               <button
                 aria-label="Activate light mode"
                 title="Activate light mode"
-                onClick={() => toggleDay(() => !isDay)}
+                onClick={handleClick}
                 className="mode-toggle-btn btn-dark"
               >
                 <MdWbSunny />
