@@ -6,15 +6,18 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
-    "develop": "env-cmd -f .env gatsby develop",
+    "build": "env-cmd .env gatsby build",
+    "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \"",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^13.4.0",
+    "babel-plugin-styled-components": "^1.10.7",
     "bootstrap": "^4.4.1",
     "gatsby": "^2.13.73",
     "gatsby-cli": "^2.8.29",
@@ -22,11 +25,13 @@
     "gatsby-plugin-react-helmet": "3.0.12",
     "gatsby-plugin-sass": "^2.1.26",
     "gatsby-plugin-sharp": "^2.3.13",
+    "gatsby-plugin-styled-components": "^3.1.19",
     "gatsby-remark-images": "^3.1.42",
     "gatsby-remark-relative-images": "^0.2.3",
     "gatsby-source-contentful": "^2.1.84",
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-transformer-remark": "^2.6.48",
+    "gh-pages": "^2.2.0",
     "jquery": "^3.4.1",
     "node-sass": "^4.13.0",
     "popper.js": "^1.15.0",
@@ -35,7 +40,7 @@
     "react-dom": "^16.9.0",
     "react-helmet": "5.2.0",
     "react-icons": "^3.8.0",
-    "styled-components": "^5.0.0-beta.8"
+    "styled-components": "^5.0.1"
   },
   "devDependencies": {
     "env-cmd": "^10.0.1",
