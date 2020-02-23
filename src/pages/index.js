@@ -1,12 +1,10 @@
-import React, { lazy, Suspense } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "../assets/main.scss";
 import Mode from "../components/Mode";
 import Layout from "../components/Layout";
-import Loader from "../components/Loader";
 import Head from "../components/Head";
-
-const MainPage = lazy(() => import("../components/main_page/Main_page"));
+import MainPage from "../components/main_page/Main_page";
 
 export default () => {
   return (
@@ -14,9 +12,7 @@ export default () => {
       <Head title="Home" />
       <Mode>
         <Layout>
-          <Suspense fallback={<Loader />}>
-            <MainPage />
-          </Suspense>
+          <MainPage />
         </Layout>
       </Mode>
     </div>

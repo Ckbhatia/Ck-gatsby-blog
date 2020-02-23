@@ -1,28 +1,25 @@
-import React, { lazy, Suspense, useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import "../../assets/main.scss";
-import Loader from "../Loader";
 
-const Latestpost = lazy(() => import("./Latest_post"));
-const SideBar = lazy(() => import("./Sidebar"));
-const Articles = lazy(() => import("./Articles"));
-const Subscribe = lazy(() => import("./Subscribe"));
+import Latestpost from "./Latest_post";
+import SideBar from "./Sidebar";
+import Articles from "./Articles";
+import Subscribe from "./Subscribe";
 
 export default function MainPage() {
   return (
     <Section className="main-page-main-container wrapper">
-      <Suspense fallback={<Loader />}>
-        <section className="hero-section">
-          <Latestpost />
-          <SideBar />
-        </section>
-        <section className="articles-section">
-          <Articles />
-        </section>
-        <section className="form-section">
-          <Subscribe />
-        </section>
-      </Suspense>
+      <section className="hero-section">
+        <Latestpost />
+        <SideBar />
+      </section>
+      <section className="articles-section">
+        <Articles />
+      </section>
+      <section className="form-section">
+        <Subscribe />
+      </section>
     </Section>
   );
 }
