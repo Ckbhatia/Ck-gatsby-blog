@@ -3,6 +3,7 @@ import { Link, graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 import Context from "../../context";
 import { FaHotjar } from "react-icons/fa";
+import "../../assets/main.scss";
 
 export default function SideBar() {
   const { isDay } = useContext(Context);

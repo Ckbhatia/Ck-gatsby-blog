@@ -3,6 +3,7 @@ import { Link, graphql, useStaticQuery } from "gatsby";
 import Img from "gatsby-image";
 import Context from "../../context";
 import styled from "styled-components";
+import "../../assets/main.scss";
 
 export default function Articles() {
   const { isDay } = useContext(Context);
