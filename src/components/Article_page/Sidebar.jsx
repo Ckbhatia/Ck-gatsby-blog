@@ -5,8 +5,10 @@ import { FaTwitter, FaLinkedinIn, FaFacebookF } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import Context from "../../context";
 
-export default function Sidebar({ author, published, topic }) {
+export default function Sidebar({ author, published, topic, title }) {
   const { isDay } = useContext(Context);
+
+  const location = window.location.href;
 
   return (
     <Aside className="post-sidebar-container">
@@ -42,7 +44,7 @@ export default function Sidebar({ author, published, topic }) {
       <div className="post-social-share-container">
         <div className="social-icon-container">
           <a
-            // href="https://twitter.com/intent/tweet?text=Chetan%20Blog&url=https%3A%2F%2Fchetanblog.com/learnnew&hashtags=chetanblog&original_referer="
+            href={`https://twitter.com/intent/tweet?text=${author}'s%20Blog&url=${location}&hashtags=${topic}&original_referer=`}
             target="_blank"
             rel="noopener noreferrer"
             className="social-icon-link"
@@ -52,7 +54,7 @@ export default function Sidebar({ author, published, topic }) {
             </span>
           </a>
           <a
-            // href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://chetanblog.com"
+            href={`https://www.linkedin.com/sharing/share-offsite/?url=${location}&title=${title}`}
             target="_blank"
             rel="noopener noreferrer"
             className="social-icon-link"
@@ -62,7 +64,7 @@ export default function Sidebar({ author, published, topic }) {
             </span>
           </a>
           <a
-            // href="http://www.facebook.com/sharer.php?u=https://chetanblog.com"
+            href={`https://www.facebook.com/sharer.php?u=${location}&t=${title}`}
             target="_blank"
             rel="noopener noreferrer"
             className="social-icon-link"
@@ -72,7 +74,9 @@ export default function Sidebar({ author, published, topic }) {
             </span>
           </a>
           <a
-            // href="mailto://"
+            href={`mailto:?subject=The amazing blog that you should read.&body=Hi,%0D%0AI got this fantastic blog. It will help you to enhance your learning if you read it once. Here's the link: ${location}.`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="social-icon-link"
           >
             <span className="social-icon">

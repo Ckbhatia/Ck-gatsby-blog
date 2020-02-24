@@ -5,6 +5,12 @@ export default function Mode(props) {
   const [isDay, toggleDay] = useState(true);
 
   useEffect(() => {
+    if (JSON.parse(localStorage.getItem("day")) === true) {
+      toggleDay(() => !isDay);
+    }
+  }, []);
+
+  useEffect(() => {
     if (!isDay) {
       document.getElementById("___gatsby").style.backgroundColor = "#131217";
     }
