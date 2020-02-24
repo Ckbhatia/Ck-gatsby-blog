@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import { FaTwitter, FaLinkedinIn, FaFacebookF } from "react-icons/fa";
@@ -7,8 +7,11 @@ import Context from "../../context";
 
 export default function Sidebar({ author, published, topic, title }) {
   const { isDay } = useContext(Context);
+  const [location, setLocation] = useState(null);
 
-  const location = window.location.href;
+  useEffect(() => {
+    setLocation(window.location.href);
+  }, []);
 
   return (
     <Aside className="post-sidebar-container">
