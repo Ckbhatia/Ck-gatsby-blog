@@ -3,6 +3,7 @@ import Img from "gatsby-image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Context from "../../context";
 import styled from "styled-components";
+import "../../assets/main.scss";
 
 export default function Post({ title, body, thumbnail }) {
   const { isDay } = useContext(Context);

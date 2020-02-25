@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { FaTwitter, FaLinkedinIn, FaFacebookF } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import Context from "../../context";
+import "../../assets/main.scss";
 
 export default function Sidebar({ author, published, topic, title }) {
   const { isDay } = useContext(Context);
