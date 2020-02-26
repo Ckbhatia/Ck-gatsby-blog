@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import styled from "styled-components";
-import "../../assets/main.scss";
+import "../assets/main.scss";
 
 const Subscribe = memo(() => {
   return (
