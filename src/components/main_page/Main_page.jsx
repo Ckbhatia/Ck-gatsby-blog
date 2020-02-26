@@ -5,7 +5,7 @@ import "../../assets/main.scss";
 import Latestpost from "./Latest_post";
 import SideBar from "./Sidebar";
 import Articles from "./Articles";
-import Subscribe from "./Subscribe";
+import Subscribe from "../Subscribe";
 
 export default function MainPage() {
   return (
