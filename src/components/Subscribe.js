@@ -1,8 +1,22 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import styled from "styled-components";
 import "../assets/main.scss";
 
 const Subscribe = memo(() => {
+  const [input, changeInput] = useState("");
+  const [hasSubmitted, updateSubmitted] = useState(false);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (input.length > 10) {
+      // Reset input
+      changeInput("");
+      // Update the submitted state
+      updateSubmitted(true);
+      setTimeout(() => updateSubmitted(false), 1000);
+    }
+  };
+
   return (
     <Div className="subscribe-container">
       <div className="subscribe-items-container">
@@ -11,16 +25,35 @@ const Subscribe = memo(() => {
         </div>
         <div className="form-main-container">
           {/* <div className="form-container"> */}
-          <form className="form-control">
+          <form
+            method="post"
+            className="form-control"
+            name="subscribe-newsletter"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+          >
+            <input type="hidden" name="subscribe-newsletter" value="contact" />
             <input
+              name="email"
               type="email"
+              value={input}
+              onChange={e => changeInput(e.target.value)}
               placeholder="Email address..."
               aria-label="email"
               className="email-input"
             />
-            <button className="btn-input">Subscribe</button>
+            <button onClick={handleSubmit} className="btn-input">
+              Subscribe
+            </button>
           </form>
         </div>
+        <span
+          className={`submit-message center-child submit-${
+            hasSubmitted ? "visible" : "hidden"
+          }`}
+        >
+          Subscribed
+        </span>
       </div>
     </Div>
   );
@@ -59,6 +92,7 @@ const Div = styled.div`
     padding: 0;
     display: grid;
     grid-template-columns: 84% 16%;
+    border: none;
     .email-input {
       padding: 0.5rem 1rem;
       border: none;
@@ -81,6 +115,21 @@ const Div = styled.div`
         background-color: #5379db;
       }
     }
+  }
+
+  .submit-message {
+    color: black;
+    position: relative;
+    top: 10%;
+    text-transform: uppercase;
+  }
+
+  .submit-hidden {
+    visibility: hidden;
+  }
+
+  .submit-visible {
+    visibility: visible;
   }
 
   @media all and (max-width: 768px) {
