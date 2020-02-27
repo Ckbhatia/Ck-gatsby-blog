@@ -2,19 +2,34 @@ import React, { memo, useState } from "react";
 import styled from "styled-components";
 import "../assets/main.scss";
 
+const encode = data => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+};
+
 const Subscribe = memo(() => {
-  const [input, changeInput] = useState("");
+  const [email, updateEmail] = useState("");
   const [hasSubmitted, updateSubmitted] = useState(false);
 
   const handleSubmit = e => {
-    e.preventDefault();
-    if (input.length > 10) {
+    if (email.length > 10) {
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({ "form-name": "subscribe", email }),
+      })
+        .then(() => updateSubmitted(true))
+        .catch(error => alert(error));
+
       // Reset input
-      changeInput("");
+      updateEmail("");
       // Update the submitted state
-      updateSubmitted(true);
-      setTimeout(() => updateSubmitted(false), 1000);
+      if (hasSubmitted) {
+        setTimeout(() => updateSubmitted(false), 1000);
+      }
     }
+    e.preventDefault();
   };
 
   return (
@@ -28,21 +43,22 @@ const Subscribe = memo(() => {
           <form
             method="post"
             className="form-control"
-            name="subscribe-newsletter"
+            name="subscribe"
             data-netlify="true"
-            data-netlify-honeypot="bot-field"
+            netlify-honeypot="bot-field"
+            onSubmit={handleSubmit}
           >
-            <input type="hidden" name="subscribe-newsletter" value="contact" />
+            <input type="hidden" name="form-name" value="subscribe" />
             <input
               name="email"
               type="email"
-              value={input}
-              onChange={e => changeInput(e.target.value)}
+              value={email}
+              onChange={e => updateEmail(e.target.value)}
               placeholder="Email address..."
               aria-label="email"
               className="email-input"
             />
-            <button onClick={handleSubmit} className="btn-input">
+            <button type="submit" className="btn-input">
               Subscribe
             </button>
           </form>
@@ -116,22 +132,18 @@ const Div = styled.div`
       }
     }
   }
-
   .submit-message {
     color: black;
     position: relative;
     top: 10%;
     text-transform: uppercase;
   }
-
   .submit-hidden {
     visibility: hidden;
   }
-
   .submit-visible {
     visibility: visible;
   }
-
   @media all and (max-width: 768px) {
     .form-text {
       font-size: 2rem;
