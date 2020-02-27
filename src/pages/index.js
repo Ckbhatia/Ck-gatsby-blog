@@ -4,7 +4,7 @@ import "../assets/main.scss";
 import Mode from "../components/Mode";
 import Layout from "../components/Layout";
 import Head from "../components/Head";
-import MainPage from "../components/main_page/Main_page";
+import MainPage from "../components/main_page/MainPage";
 
 export default () => {
   return (
