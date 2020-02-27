@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import "../../assets/main.scss";
-
-import Latestpost from "./Latest_post";
+import Latestpost from "./LatestPost";
 import SideBar from "./Sidebar";
 import Articles from "./Articles";
 import Subscribe from "../Subscribe";
+import "../../assets/main.scss";
 
 export default function MainPage() {
   return (
