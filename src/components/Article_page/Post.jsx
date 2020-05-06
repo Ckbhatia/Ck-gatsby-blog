@@ -1,12 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useLayoutEffect } from "react";
 import Img from "gatsby-image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Context from "../../context";
 import styled from "styled-components";
-import "../../assets/main.scss";
+import Sidebar from "./Sidebar";
 
-export default function Post({ title, body, thumbnail }) {
+export default function Post({
+  title,
+  author,
+  published,
+  topic,
+  body,
+  thumbnail,
+}) {
   const { isDay } = useContext(Context);
+  const [width, updateWidth] = useState(0);
 
   const options = {
     renderNode: {
@@ -17,6 +25,15 @@ export default function Post({ title, body, thumbnail }) {
       },
     },
   };
+
+  useLayoutEffect(() => {
+    window.addEventListener("resize", updateWidth(window.innerWidth));
+
+    return () => {
+      window.removeEventListener("resize", updateWidth(window.innerWidth));
+    };
+  }, []);
+
   return (
     <Article className="post-container">
       <div className="post-heading-container">
@@ -27,6 +44,10 @@ export default function Post({ title, body, thumbnail }) {
       <div className="post-image-container">
         <Img fluid={thumbnail.fluid} alt={"post thumbnail"} />
       </div>
+      {/* Only shows to devices with this or below width */}
+      {width <= 768 && (
+        <Sidebar author={author} published={published} topic={topic} />
+      )}
       <div
         className={`post-paragraph-container para-cont-${
           isDay ? "light" : "dark"
@@ -77,7 +98,10 @@ const Article = styled.article`
   p,
   span,
   li {
-    color: #d9d7e0;
+    // color: #d9d7e0;
+    color: #b3b9c5;
+    font-family: Helvetica Neue, Inter, -apple-system, BlinkMacSystemFont,
+      Helvetica, Arial, sans-serif;
   }
 
   .para-cont-light > h3,
