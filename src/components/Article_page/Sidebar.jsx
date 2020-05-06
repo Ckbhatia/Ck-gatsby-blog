@@ -1,22 +1,14 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import { FaTwitter, FaLinkedinIn, FaFacebookF } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
 import Context from "../../context";
-import "../../assets/main.scss";
 
 export default function Sidebar({ author, published, topic, title }) {
   const { isDay } = useContext(Context);
-  const [location, setLocation] = useState(null);
-
-  useEffect(() => {
-    setLocation(window.location.href);
-  }, []);
 
   return (
     <Aside className="post-sidebar-container">
-      <div className="post-info-container">
+      <div className={`post-info-container post-${isDay ? "light" : "dark"}`}>
         <div className="author-image-container">
           {/* TODO: image should be loaded dynamically */}
           <Link to="/" className="author-image-link">
@@ -27,66 +19,23 @@ export default function Sidebar({ author, published, topic, title }) {
             />
           </Link>
         </div>
-        <div className="post-author-text-container">
-          <Link to="/" className="post-author-text-link">
-            <span
-              className={`post-author-text text-${isDay ? "light" : "dark"}`}
-            >
-              {author}
-            </span>
-          </Link>
-        </div>
-        <div className="post-time-container">
-          <span className="post-time-text">{published}</span>
-        </div>
-        <div className="post-cate-container">
-          <Link to="/" rel="noopener noreferrer" className="post-cate-link">
-            <span className="post-cate-text">{topic}</span>
-          </Link>
-        </div>
-      </div>
-      <div className="post-social-share-container">
-        <div className="social-icon-container">
-          <a
-            href={`https://twitter.com/intent/tweet?text=${author}'s%20Blog&url=${location}&hashtags=${topic}&original_referer=`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-icon-link"
-          >
-            <span className="social-icon">
-              <FaTwitter />
-            </span>
-          </a>
-          <a
-            href={`https://www.linkedin.com/sharing/share-offsite/?url=${location}&title=${title}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-icon-link"
-          >
-            <span className="social-icon">
-              <FaLinkedinIn />
-            </span>
-          </a>
-          <a
-            href={`https://www.facebook.com/sharer.php?u=${location}&t=${title}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-icon-link"
-          >
-            <span className="social-icon">
-              <FaFacebookF />
-            </span>
-          </a>
-          <a
-            href={`mailto:?subject=The amazing blog that you should read.&body=Hi,%0D%0AI got this fantastic blog. It will help you to enhance your learning if you read it once. Here's the link: ${location}.`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-icon-link"
-          >
-            <span className="social-icon">
-              <MdEmail />
-            </span>
-          </a>
+        <div className="post-extra-info-container">
+          <div className="post-author-link-container">
+            <Link to="/" className="post-author-text-link">
+              <span
+                className={`post-author-text text-${isDay ? "light" : "dark"}`}
+              >
+                {author}
+              </span>
+            </Link>
+          </div>
+          <div className="post-text-container">
+            <span className="post-time-text">{published}</span>
+            <Link to="/" className="post-cate-link">
+              <br />
+              <span className="post-cate-text">• {topic}</span>
+            </Link>
+          </div>
         </div>
       </div>
     </Aside>
@@ -95,8 +44,8 @@ export default function Sidebar({ author, published, topic, title }) {
 
 const Aside = styled.aside`
   display: grid;
+  // grid-template-columns: 75%;
   grid-template-rows: 40px 80px;
-  grid-gap: 400px;
   margin: 14rem 0;
   .post-info-container {
     height: 100%;
