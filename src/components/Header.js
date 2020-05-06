@@ -46,55 +46,56 @@ export default function Header() {
             <span className="header-blog-text">blog</span>
           </h1>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <NavDropdown
-              title="Topic"
-              id="basic-nav-dropdown"
-              className={`nav-dropdown text-${isDay ? "light" : "dark"}`}
+        {/* TEMP BlOCK */}
+        {/* <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
+        /> */}
+        {/* <Navbar.Collapse id="basic-navbar-nav"> */}
+        <Nav className="mr-auto">
+          <NavDropdown
+            title="Topic"
+            id="basic-nav-dropdown"
+            className={`nav-dropdown text-${isDay ? "light" : "dark"}`}
+          >
+            {/* ADD Dynamic names */}
+            <NavDropdown.Item href="#">ReactJs</NavDropdown.Item>
+            <NavDropdown.Item href="#">JavaScript</NavDropdown.Item>
+            <NavDropdown.Item href="#">Express</NavDropdown.Item>
+            <NavDropdown.Item href="#">HTML & CSS</NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+        <Form inline>
+          <Button className="search-btn" variant="outline-success">
+            <GoSearch />
+          </Button>
+          <FormControl
+            type="text"
+            placeholder="SEARCH"
+            className={`mr-sm-2 form-control form-${isDay ? "light" : "dark"}`}
+          />
+        </Form>
+        <div className="mode-toggler-container">
+          {isDay ? (
+            <button
+              aria-label="Activate dark mode"
+              title="Activate dark mode"
+              onClick={handleClick}
+              className="mode-toggle-btn btn-light"
             >
-              {/* ADD Dynamic names */}
-              <NavDropdown.Item href="#">ReactJs</NavDropdown.Item>
-              <NavDropdown.Item href="#">JavaScript</NavDropdown.Item>
-              <NavDropdown.Item href="#">Express</NavDropdown.Item>
-              <NavDropdown.Item href="#">HTML & CSS</NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-          <Form inline>
-            <Button variant="outline-success">
-              <GoSearch />
-            </Button>
-            <FormControl
-              type="text"
-              placeholder="SEARCH"
-              className={`mr-sm-2 form-control form-${
-                isDay ? "light" : "dark"
-              }`}
-            />
-          </Form>
-          <div className="mode-toggler-container">
-            {isDay ? (
-              <button
-                aria-label="Activate dark mode"
-                title="Activate dark mode"
-                onClick={handleClick}
-                className="mode-toggle-btn btn-light"
-              >
-                <IoIosMoon />
-              </button>
-            ) : (
-              <button
-                aria-label="Activate light mode"
-                title="Activate light mode"
-                onClick={handleClick}
-                className="mode-toggle-btn btn-dark"
-              >
-                <MdWbSunny />
-              </button>
-            )}
-          </div>
-        </Navbar.Collapse>
+              <IoIosMoon />
+            </button>
+          ) : (
+            <button
+              aria-label="Activate light mode"
+              title="Activate light mode"
+              onClick={handleClick}
+              className="mode-toggle-btn btn-dark"
+            >
+              <MdWbSunny />
+            </button>
+          )}
+        </div>
+        {/* </Navbar.Collapse> */}
       </Navbar>
     </Div>
   );
@@ -102,16 +103,29 @@ export default function Header() {
 
 const Div = styled.div`
   margin: 0 2rem;
+  @media screen and (max-width: 440px) {
+    // Reset margin
+    margin: 0;
+  }
   .navbar-main-heading-text {
     font-family: "Roboto", sans-serif;
     // font-family: "Source Serif Pro", serif;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     letter-spacing: 0.01rem;
     font-weight: 700;
     text-transform: lowercase;
     .header-blog-text {
       color: #12ab87;
     }
+  }
+
+  // TEMP HIDDEN
+  #basic-navbar-nav,
+  .nav-dropdown,
+  .basic-navbar,
+  .form-control,
+  .search-btn {
+    display: none;
   }
 
   .navbar-light .navbar-toggler {
@@ -168,7 +182,7 @@ const Div = styled.div`
     // RESET
     box-shadow: 0 0 0;
     border: none;
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: 700;
     &:focus {
       border: 1px solid #89898b;
