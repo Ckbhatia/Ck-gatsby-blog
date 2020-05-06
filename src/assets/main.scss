@@ -1,4 +1,4 @@
-// @import "reset";
+@import "reset";
 @import "vars";
 @import "base";
 @import "general";
@@ -70,5 +70,12 @@
   .social-icon-container {
     grid-template-columns: repeat(4, 25%);
     justify-items: center !important;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .post-container {
+    grid-row-start: 1;
+    grid-column: 1 / span 12;
   }
 }
