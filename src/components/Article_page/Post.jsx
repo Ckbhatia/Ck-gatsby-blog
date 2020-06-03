@@ -88,6 +88,14 @@ const Article = styled.article`
     p {
       font-size: 1.3rem;
       font-weight: 400;
+      margin-top: 2rem;
+    }
+    code {
+      display: block;
+      color: rgba(0, 0, 0, 0.84);
+      background: rgba(0, 0, 0, 0.05) none repeat scroll 0% 0%;
+      padding: 20px;
+      margin: 4rem 0;
     }
   }
 
