@@ -92,13 +92,29 @@ const Article = styled.article`
     }
     code {
       display: block;
-      color: rgba(0, 0, 0, 0.84);
-      background: rgba(0, 0, 0, 0.05) none repeat scroll 0% 0%;
       padding: 20px;
       margin: 4rem 0;
+      border-radius: 6px;
+    }
+    img {
+      width: 100%;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
     }
   }
 
+  // code
+  .para-cont-light code {
+    color: rgba(0, 0, 0, 0.84);
+    background: rgba(0, 0, 0, 0.05) none repeat scroll 0% 0%;
+    box-shadow: 3px 3px 12px 0px rgba(202, 202, 202, 0.15);
+  }
+
+  .para-cont-dark code {
+    color: rgb(179, 185, 197);
+    background: rgb(58, 58, 58) none repeat scroll 0% 0%;
+    box-shadow: 2px 4px 25px rgba(0,0,0,.15);
+  }
   // Text items color
   .para-cont-dark > h3,
   h4,
@@ -123,6 +139,11 @@ const Article = styled.article`
 
   .post-paragraph-container li {
     font-size: 1.3rem;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 4rem;
+    margin-bottom: 0.5rem;
   }
 
   h2 {
