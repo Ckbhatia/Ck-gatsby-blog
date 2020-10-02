@@ -10,7 +10,7 @@ export default function Articles() {
 
   const data = useStaticQuery(graphql`
     query {
-      allContentfulBlogPost(skip: 5, sort: { fields: published, order: DESC }) {
+      allContentfulTestBlog(skip: 5, sort: { fields: published, order: DESC }) {
         edges {
           node {
             title
@@ -34,7 +34,7 @@ export default function Articles() {
     <Div className="article-main-container">
       <ul className="article-list-container">
         {/* Get articles data dynamicaly */}
-        {data.allContentfulBlogPost.edges.map((edge, i) => {
+        {data.allContentfulTestBlog.edges.map((edge, i) => {
           return (
             <li key={i} className="article-item-container">
               <Link

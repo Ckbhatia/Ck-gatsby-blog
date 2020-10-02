@@ -19,7 +19,7 @@ const MainBlog = ({ data }) => {
     topic,
     body,
     thumbnail,
-  } = data.contentfulBlogPost;
+  } = data.contentfulTestBlog;
 
   useLayoutEffect(() => {
     window.addEventListener("resize", updateWidth(window.innerWidth));

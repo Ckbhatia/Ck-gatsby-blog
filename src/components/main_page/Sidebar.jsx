@@ -10,7 +10,7 @@ export default function SideBar() {
 
   const data = useStaticQuery(graphql`
     {
-      allContentfulBlogPost(
+      allContentfulTestBlog(
         sort: { order: DESC, fields: published }
         skip: 1
         limit: 4
@@ -38,7 +38,7 @@ export default function SideBar() {
       </div>
       <div className="picks-list-main-container">
         <ul className="picks-list-container">
-          {data.allContentfulBlogPost.edges.map((edge, i) => {
+          {data.allContentfulTestBlog.edges.map((edge, i) => {
             return (
               <li key={i} className="picks-list-item-container">
                 <Link
