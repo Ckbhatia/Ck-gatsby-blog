@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>README</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+
+
+</head>
+
+<body>
+    <div class="ui container">
+        <p>
+            <p style="text-align: center;">
+                <a href="https://github.com/Ckbhatia/Ck-gatsby-blog">
+                    <img alt="Ck Gatsby" src="https://i.ibb.co/N94vJt0/ckgatsbyicon.png" width="60" />
+                </a>
+            </p>
+        </p>
+        <h1 style="text-align: center;">
+            Ck Gatsby blog
+        </h1>
+
+        <h2 id="table-of-contents">Table of contents</h2>
+        <ul>
+            <li><a href="http://github.com/ckbhatia/Ck-gatsby-blog#features">Features</a></li>
+            <li><a href="http://github.com/ckbhatia/Ck-gatsby-blog#quick-start">Quick Start</a></li>
+            <li><a href="http://github.com/ckbhatia/Ck-gatsby-blog#set-up">Set-up contentful CMS</a></li>
+            <li><a href="http://github.com/ckbhatia/Ck-gatsby-blog#deploy-with-netlify">Deploy with Netlify</a></li>
+            <li><a href="http://github.com/ckbhatia/Ck-gatsby-blog#folder-structure">Folder Structure</a></li>
+            <li><a href="http://github.com/ckbhatia/Ck-gatsby-blog#license">License</a></li>
+        </ul>
+        <h2 id="features">Features</h2>
+        <ul>
+            <li>Beautiful layout.</li>
+            <li>Dark Mode.</li>
+            <li>Beautiful typography.</li>
+            <li>Code highlighting.</li>
+            <li>Filter by topics. ( upcoming )</li>
+            <li>Search articles. ( upcoming )</li>
+            <li>Pagination support. ( upcoming )</li>
+            <li>Mobile-Support.</li>
+            <li><a href="http://contentful.com">Contentful CMS</a> support.</li>
+        </ul>
+        <h2 id="quick-start">Quick Start</h2>
+        <h4 id="create-a-gatsby-site">Create a Gatsby site</h4>
+        <p>Use the Gatsby CLI to create a new site, specifying the Ck gatsby starter.</p>
+        <pre>
+              <code>
+# Create a new Gatsby site using the Ck gatsby starter
+gatsby new &lt;project-name&gt; https://github.com/Ckbhatia/Ck-gatsby-blog
+             </code>
+        </pre>
+        <h4 id="start-developing">Start Developing</h4>
+        <p>Navigate into your new site’s directory and start it up.</p>
+        <pre>
+            <code>
+cd blog
+gatsby develop
+          </code>
+        </pre>
+        <h4 id="open-the-source-code-and-start-editing-">Open the source code and start editing!</h4>
+        <p>Your site is now running at <code>http://localhost:8000</code>!</p>
+        <p>Note: You&#39;ll also see a second link: <code>http://localhost:8000/___graphql</code>. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the <a href="https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql">Gatsby tutorial</a>.</p>
+        <h4 id="access-locally">Access Locally</h4>
+        <pre><code>
+$ git clone https://github.com/[GITHUB_USERNAME]/[REPO_NAME].git
+$ cd [REPO_</span>NAME]
+$ yarn
+$ npm run develop
+          </code></pre>
+        <h2 id="set-up-contentful-cms">Set-up contentful CMS</h2>
+        <p>It&#39;s optional to set-up contentful CMS.</p>
+        <ul>
+            <li>Create an account on contentful.com</li>
+            <li>Navigate to content model, click on add content type.</li>
+            <li>Name it anything, for ex: blog.</li>
+            <li>Click on Add field, create fields one by one.</li>
+        </ul>
+        <p>There are seven types of fields required.</p>
+        <table style="width: 45%;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Field ID</th>
+                    <th style="text-align:center">Appearance</th>
+                    <th>Other</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Title</td>
+                    <td>title</td>
+                    <td style="text-align:center">Short Text</td>
+                    <td>Entry File</td>
+                </tr>
+                <tr>
+                    <td>Slug</td>
+                    <td>slug</td>
+                    <td style="text-align:center">Short</td>
+                </tr>
+                <tr>
+                    <td>Thumbnail</td>
+                    <td>thumbnail</td>
+                    <td style="text-align:center">Media</td>
+                </tr>
+                <tr>
+                    <td>Topic</td>
+                    <td>topic</td>
+                    <td style="text-align:center">Short Text</td>
+                </tr>
+                <tr>
+                    <td>Author</td>
+                    <td>author</td>
+                    <td style="text-align:center">Short Text</td>
+                </tr>
+                <tr>
+                    <td>Published</td>
+                    <td>published</td>
+                    <td style="text-align:center">Date &amp; Time</td>
+                </tr>
+                <tr>
+                    <td>Body</td>
+                    <td>body</td>
+                    <td style="text-align:center">Rich Text</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Note: Field ID is case sensitive.</p>
+        <h3 id="config-contentful">Config contentful</h3>
+        <ul>
+            <li>Go to settings of contentful.com and click on API Key.</li>
+            <li>Click on &quot;Example Key 1&quot;, you can rename this.</li>
+            <li>Copy Space ID and Content Delivery API - access token.</li>
+            <li>Now, Navigate to your local copy of this repo.</li>
+            <li>Create .env.development and .env.production file.</li>
+            <li>Put these variables inside and save the file.</li>
+        </ul>
+
+        <pre>
+            <code>
+CONTENTFUL_SPACE_ID=&lt;Paste here your space Id&gt;
+CONTENTFUL_ACCESS_TOKEN=&lt;Paste here your delivery API - access token&gt;
+            </code>
+        </pre>
+        <h3 id="publishing-article-with-contentful">Publishing article with contentful</h3>
+        <ul>
+            <li>Navigate to content on contentful.com</li>
+            <li>Click on Add Blog Post button to create a post.</li>
+            <li>Write your article and fill all the required fields.</li>
+            <li>Publish your blog and deploy or re-deploy your own copy of this repo.</li>
+        </ul>
+        <h2 id="deploy-with-netlify">Deploy with Netlify</h2>
+        <p>Click the button below to build and deploy your own copy of the repository:</p>
+        <p>
+            <a href="https://app.netlify.com/start/deploy?repository=http://github.com/ckbhatia/Ck-gatsby-blog" target="_blank"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
+        </p>
+        <h2 id="folder-structure">Folder Structure</h2>
+        <pre><code>└── Public
+          └── static
+              └── favicon
+          └── src
+              ├── assets
+              │   ├── _base
+              │   ├── _general
+              │   ├── _reset
+              │   ├── _vars
+              │   └── main
+              ├── components
+              │   ├── Article_page
+              |<span class="hljs-string">   </span>|<span class="hljs-string">   ├── MainBlog
+              </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   ├── Post
+              </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   ├── Share
+              </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   └── Sidebar
+              </span>|<span class="hljs-string">   ├── Main_page
+              </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   ├── Article
+              </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   ├── LatestPost
+              </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   ├── MainPage
+              </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   └── Sidebar
+              │   ├── Footer
+              │   ├── Head
+              │   ├── Header
+              │   ├── Layout
+              │   ├── Loader
+              │   ├── Mode
+              │   └── Subscribe
+              ├── Pages
+              │   ├── 404
+              │   └── Index
+              ├── Posts
+              ├── templates
+              │   └── blog
+              └── Context</span>
+          </code></pre>
+        <h2 id="license">License</h2>
+        <p>The MIT License (MIT)</p>
+        <p>Copyright (c) 2020 Chetan Kumar</p>
+
+    </div>
+
+</body>
+
+</html>
