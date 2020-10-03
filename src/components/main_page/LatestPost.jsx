@@ -10,7 +10,7 @@ export default function Latestpost() {
 
   const data = useStaticQuery(graphql`
     {
-      allContentfulTestBlog(
+      allContentfulBlogPost(
         sort: { order: DESC, fields: published }
         limit: 1
       ) {
@@ -39,7 +39,7 @@ export default function Latestpost() {
     topic,
     slug,
     thumbnail,
-  } = data.allContentfulTestBlog.edges[0].node;
+  } = data.allContentfulBlogPost.edges[0].node;
   return (
     <>
       <Article className="latest-post-main-container">
