@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import {
   Navbar,
@@ -25,8 +25,23 @@ export default function Header() {
           title
         }
       }
+      allContentfulBlogPost {
+        edges {
+          node {
+            topic
+          }
+        }
+      }
     }
   `);
+
+  const topics = useMemo(() => {
+    const nodesTopics = data.allContentfulBlogPost.edges.map(
+      edge => edge.node.topic
+    );
+    //removes duplicate entries;
+    return [...new Set(nodesTopics)];
+  }, [data.allContentfulBlogPost]);
 
   const handleClick = () => {
     localStorage.setItem("day", JSON.stringify(isDay));
@@ -58,10 +73,11 @@ export default function Header() {
             className={`nav-dropdown text-${isDay ? "light" : "dark"}`}
           >
             {/* ADD Dynamic names */}
-            <NavDropdown.Item href="#">ReactJs</NavDropdown.Item>
-            <NavDropdown.Item href="#">JavaScript</NavDropdown.Item>
-            <NavDropdown.Item href="#">Express</NavDropdown.Item>
-            <NavDropdown.Item href="#">HTML & CSS</NavDropdown.Item>
+            {topics.map(topic => (
+              <NavDropdown.Item href="#" key={topic}>
+                {topic}
+              </NavDropdown.Item>
+            ))}
           </NavDropdown>
         </Nav>
         <Form inline>
@@ -120,8 +136,6 @@ const Div = styled.div`
   }
 
   // TEMP HIDDEN
-  #basic-navbar-nav,
-  .nav-dropdown,
   .basic-navbar,
   .form-control,
   .search-btn {
