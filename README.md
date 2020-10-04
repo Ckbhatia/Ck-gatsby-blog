@@ -7,10 +7,21 @@
   Ck Gatsby blog starter
 </h1>
 
+<h3 align="center">A beautiful and featureful gatsby blog starter for bloggers!</h3>
+&nbsp;
+
+<div align="center">
+
 [![Build Status](https://travis-ci.org/athityakumar/colorls.svg?branch=master)](https://travis-ci.org/athityakumar/colorls)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=shields)](https://github.com/Ckbhatia/Ck-gatsby-blog/pulls)
 [![License](https://img.shields.io/github/license/day8/re-frame.svg)](license.txt)
 [![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://chetanblog.netlify.com)
+
+</div>
+
+<img align="center" alt="landing page" src="./src/assets/images/home.png" width="1349" />
+
+&nbsp;
 
 ## Table of contents
 + [Features](http://github.com/ckbhatia/Ck-gatsby-blog#features)
