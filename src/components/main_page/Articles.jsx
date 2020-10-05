@@ -19,6 +19,7 @@ export default function Articles() {
                 srcSet
                 srcWebp
                 aspectRatio
+                base64
               }
             }
             slug
@@ -42,19 +43,12 @@ export default function Articles() {
                 className="article-item-link"
               >
                 <div
-                  className={`article-container container-bg-${
-                    isDay ? "light" : "dark"
-                  }`}
+                  className={`article-container container-bg-${isDay ? "light" : "dark"
+                    }`}
                 >
-                  <div className="article-banner-container center-child">
-                    {/* TODO: Add dynamic image url */}
-                    {/* <img
-                      src="https://tinyurl.com/qvy5ln3"
-                      alt="article"
-                      className="article-image"
-                    /> */}
-
+                  <div className="article-banner-container">
                     <Img
+                      className="article-thumbnail"
                       fluid={edge.node.thumbnail.fluid}
                       alt={"article thumbnail"}
                     />
@@ -62,16 +56,14 @@ export default function Articles() {
                   <div className="article-text-container">
                     <span
                       // Note: cate stands for category
-                      className={`article-cate-text topic-text-${
-                        isDay ? "light" : "dark"
-                      }`}
+                      className={`article-cate-text topic-text-${isDay ? "light" : "dark"
+                        }`}
                     >
                       {edge.node.topic}
                     </span>
                     <h4
-                      className={`article-heading heading-${
-                        isDay ? "light" : "dark"
-                      }`}
+                      className={`article-heading heading-${isDay ? "light" : "dark"
+                        }`}
                     >
                       {edge.node.title}
                     </h4>
@@ -108,6 +100,9 @@ const Div = styled.div`
   }
   .article-container {
     padding: 1rem;
+    border-radius: 10px;
+  }
+  .article-thumbnail {
     border-radius: 10px;
   }
   .container-bg-light:hover {
