@@ -3,7 +3,7 @@
 If you would like to contribute code you can do so through GitHub by staring and forking the repository and sending a pull request.
 When submitting code, please make every effort to follow existing conventions and style in order to keep the code as readable as possible. 
 
-You are bound to follow code of conduct of this project when you contribute to this project or repo. So, please refer to that first: [CODE OF CONDUCT](https://github.com/Ckbhatia/Ck-gatsby-blog/CODE_OF_CONDUCT.md)
+You are bound to follow code of conduct of this project when you contribute to this project or repository. So, please refer to that first: [CODE OF CONDUCT](https://github.com/Ckbhatia/Ck-gatsby-blog/blob/master/CODE_OF_CONDUCT.md)
 
 ## Reporting issues & features requests
 If you notice any bugs in the app, see some code that can be improved, or have features you would like to be added, please create a bug report or a feature request!
