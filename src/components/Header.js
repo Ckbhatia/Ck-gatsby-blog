@@ -36,8 +36,8 @@ export default function Header() {
   `);
 
   const topics = useMemo(() => {
-    const nodesTopics = data.allContentfulBlogPost.edges.map(
-      edge => edge.node.topic
+    const nodesTopics = data.allContentfulBlogPost.edges.map(edge =>
+      edge.node.topic.toLowerCase()
     );
     //removes duplicate entries;
     return [...new Set(nodesTopics)];
@@ -68,13 +68,12 @@ export default function Header() {
         {/* <Navbar.Collapse id="basic-navbar-nav"> */}
         <Nav className="mr-auto">
           <NavDropdown
-            title="Topic"
+            title="Topics"
             id="basic-nav-dropdown"
             className={`nav-dropdown text-${isDay ? "light" : "dark"}`}
           >
-            {/* ADD Dynamic names */}
             {topics.map(topic => (
-              <NavDropdown.Item href="#" key={topic}>
+              <NavDropdown.Item href={`/topic/${topic}`} key={topic}>
                 {topic}
               </NavDropdown.Item>
             ))}
