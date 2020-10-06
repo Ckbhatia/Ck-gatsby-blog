@@ -4,8 +4,8 @@
 @import "general";
 
 .main-blog-container {
-  height: 100%;
-  display: grid;
+  height: 101%;
+  display: table;
   grid-template-columns: repeat(12, 8.33%);
   grid-template-rows: 20% 15% 70%;
 
@@ -56,12 +56,12 @@
   .post-extra-info-container {
     margin-left: 1rem;
   }
-  // .post-dark {
-  //   background-color: #0e0e0e;
-  // }
-  // .post-light {
-  //   background-color: #f5f5f5;
-  // }
+  .post-dark {
+    background-color: #0e0e0e;
+  }
+  .post-light {
+    background-color: #f5f5f5;
+  }
   .post-social-share-container {
     grid-row: 3;
     grid-column: 2 / 12;
@@ -73,9 +73,10 @@
   }
 }
 
-@media screen and (max-width: 440px) {
+@media screen and (max-width: 540px) {
   .post-container {
     grid-row-start: 1;
     grid-column: 1 / span 12;
   }
 }
+
