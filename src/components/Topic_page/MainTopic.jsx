@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import FeaturedPost from "./FeaturedPost";
 import LatestPosts from "./LatestPosts";
@@ -7,8 +7,12 @@ import Context from "../../context";
 
 const MainTopic = ({ data }) => {
   const { isDay } = useContext(Context);
-
+  const [topic, setTopic] = useState("Topic");
   const [featuredPost, ...postList] = data.allContentfulBlogPost.edges;
+
+  useEffect(() => {
+    setTopic(window.location.pathname.split("/topic/")[1]);
+  }, []);
 
   return (
     <Layout>
@@ -22,7 +26,7 @@ const MainTopic = ({ data }) => {
                 isDay ? "light" : "dark"
               }`}
             >
-              {window.location.pathname.split("/topic/")[1] ?? "Topic"}
+              {topic}
             </h1>
             {/* Add some topic information */}
           </div>
