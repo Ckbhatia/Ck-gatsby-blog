@@ -7,7 +7,6 @@ import SEO from "../components/SEO";
 export default function blog({ data }) {
   return (
     <Mode>
-      <SEO title={data.contentfulBlogPost.title} />
       <div className="blog-container">
         <MainBlog data={data} />
       </div>
