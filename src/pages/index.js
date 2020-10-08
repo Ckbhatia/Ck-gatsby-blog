@@ -3,13 +3,14 @@ import "bootstrap/dist/css/bootstrap.css";
 import "../assets/main.scss";
 import Mode from "../components/Mode";
 import Layout from "../components/Layout";
-import Head from "../components/Head";
+import SEO from "../components/SEO";
 import MainPage from "../components/main_page/MainPage";
 
 export default () => {
   return (
     <div className="main-app-container">
-      <Head title="Home" />
+      <SEO title="Home" pathname="/"/>
+
       <Mode>
         <Layout>
           <MainPage />
