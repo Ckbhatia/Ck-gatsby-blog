@@ -12,26 +12,40 @@ const LatestPosts = ({ posts }) => {
       {posts.map(({ node }) => (
         <Post>
           <Link to={`/blog/${node.slug}`} className="post-link">
-            <div className="post-topic-container">
-              <div className="post-info">
-                <h4 className={`heading-${isDay ? "light" : "dark"}`}>
-                  {node.title}
-                </h4>
-                <div className="post-footer">
-                  <h6 className={`heading-${isDay ? "light" : "dark"}`}>
-                    {node.author}
-                  </h6>
-                  <p className={`heading-${isDay ? "light" : "dark"}`}>
-                    {node.published}
-                  </p>
-                </div>
-              </div>
+            <div
+              className={`post-topic-container container-bg-${
+                isDay ? "light" : "dark"
+              }`}
+            >
               <div className="post-image">
                 <Img
                   fluid={node.thumbnail.fluid}
-                  imgStyle={{ objectFit: "contain" }}
                   alt={"post thumbnail"}
+                  className="post-image-thumbnail"
                 />
+              </div>
+              <div className="post-info">
+                <h4
+                  className={`post-info-title heading-${
+                    isDay ? "light" : "dark"
+                  }`}
+                >
+                  {node.title}
+                </h4>
+                <h5
+                  className={`post-info-topic topic-text-${
+                    isDay ? "light" : "dark"
+                  }`}
+                >
+                  {node.topic}
+                </h5>
+                <p
+                  className={`post-info-published heading-${
+                    isDay ? "light" : "dark"
+                  }`}
+                >
+                  {node.published}
+                </p>
               </div>
             </div>
           </Link>
@@ -47,28 +61,40 @@ const Post = styled.div`
   }
 
   .post-topic-container {
-    margin: 1.5rem 0;
-    height: 8rem;
+    margin: 1rem 0;
     display: grid;
-    grid-template-columns: 80% 20%;
-    .post-info {
-      grid-column: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    grid-template-columns: 30% 70%;
+    @media all and (max-width: 768px) {
+      display: block;
+    }
 
-      .post-footer {
-        h6,
-        p {
-          margin: 0;
-          text-decoration: none;
-        }
+    .post-image {
+      grid-column: 1;
+      .post-image-thumbnail {
+        border-radius: 10px;
       }
     }
-    .post-image {
+    .post-info {
+      padding: 1rem;
       grid-column: 2;
-      > div {
-        height: 8rem;
+      @media all and (max-width: 992px) {
+        display: grid;
+        .post-info-title {
+          margin-bottom: 1rem;
+        }
+        .post-info-topic {
+          grid-row: 1;
+        }
+      }
+
+      .post-info-topic {
+        margin-bottom: 1.5rem;
+        &.topic-text-light {
+          color: #696969;
+        }
+        &.topic-text-dark {
+          color: #969696;
+        }
       }
     }
   }
