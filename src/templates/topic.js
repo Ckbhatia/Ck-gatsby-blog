@@ -19,9 +19,9 @@ export const query = graphql`
       edges {
         node {
           title
+          topic
           slug
           published(formatString: "Do, MMMM YYYY")
-          author
           thumbnail {
             fluid(maxWidth: 1600, maxHeight: 800) {
               srcSet
