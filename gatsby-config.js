@@ -38,7 +38,20 @@ module.exports = {
             },
           },
         ],
-      },
+      },	  
     },
+	{
+	  resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `ck-gatsby-blog`,
+        short_name: `ckbhatia`,
+        start_url: `/`,
+        background_color: `#fff`,
+        theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `src/assets/images/home.png`,
+      },
+	},
+	`gatsby-plugin-offline`,
   ],
 };
