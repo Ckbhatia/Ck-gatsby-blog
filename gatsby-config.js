@@ -40,8 +40,8 @@ module.exports = {
         ],
       },	  
     },
-	{
-	  resolve: `gatsby-plugin-manifest`,
+    {
+      resolve: `gatsby-plugin-manifest`,
       options: {
         name: `ck-gatsby-blog`,
         short_name: `ckbhatia`,
@@ -51,7 +51,7 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/assets/images/home.png`,
       },
-	},
-	`gatsby-plugin-offline`,
+    },
+    `gatsby-plugin-offline`,
   ],
 };
