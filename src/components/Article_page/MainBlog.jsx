@@ -1,4 +1,4 @@
-import React, { useContext, useState, useLayoutEffect } from "react";
+import React, { useContext, useState, useLayoutEffect, useEffect } from "react";
 import Context from "../../context";
 import Sidebar from "./Sidebar";
 import Post from "./Post";
@@ -7,10 +7,17 @@ import Layout from "../Layout";
 import Articles from "../main_page/Articles";
 import Subscribe from "../Subscribe";
 import Share from "./Share";
+import SEO from "../SEO";
 
 const MainBlog = ({ data }) => {
   const { isDay } = useContext(Context);
   const [width, updateWidth] = useState(0);
+  const [location, setLocation] = useState(null);
+  console.log(data)
+
+  useEffect(() => {
+    setLocation(window.location.pathname);
+  }, []);
 
   const {
     title,
@@ -31,6 +38,7 @@ const MainBlog = ({ data }) => {
 
   return (
     <Layout>
+      <SEO title={title} description={`Topic: ${topic}. Published: ${published}`} pathname={location} image={{src:'https:' + thumbnail.fluid.src, width:300, height:300}}/>
       <Div className="main-blog-container wrapper">
         {/* Only shows to devices with this or below width */}
         {width >= 769 && (
