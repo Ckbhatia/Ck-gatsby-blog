@@ -6,6 +6,9 @@ module.exports = {
   siteMetadata: {
     title: "Chetan",
     author: "Chetan Kumar",
+    keywords: ["Chetan", "Kumar", "Blog", "starter"],
+    siteUrl: "https://chetankumar.com",
+    description: "A beautiful and featureful gatsby blog starter for bloggers!"
   },
   plugins: [
     "gatsby-plugin-react-helmet",
@@ -36,6 +39,9 @@ module.exports = {
               maxWidth: 750,
               linkImagesToOriginal: false,
             },
+          },
+          {
+            resolve: "gatsby-remark-prismjs",
           },
         ],
       },	  

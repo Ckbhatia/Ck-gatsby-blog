@@ -79,3 +79,16 @@
     grid-column: 1 / span 12;
   }
 }
+
+.container-bg-light:hover {
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(209, 209, 209, 1);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(209, 209, 209, 1);
+  box-shadow: 0px 1px 4px 0px rgba(209, 209, 209, 1);
+  border-radius: 10px;
+}
+.container-bg-dark:hover {
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(19, 18, 23, 1);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(19, 18, 23, 1);
+  box-shadow: 0px 1px 4px 0px rgba(19, 18, 23, 1);
+  border-radius: 10px;
+}

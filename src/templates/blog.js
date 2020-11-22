@@ -2,12 +2,11 @@ import React from "react";
 import { graphql } from "gatsby";
 import MainBlog from "../components/Article_page/MainBlog";
 import Mode from "../components/Mode";
-import Head from "../components/Head";
+import SEO from "../components/SEO";
 
 export default function blog({ data }) {
   return (
     <Mode>
-      <Head title={data.contentfulBlogPost.title} />
       <div className="blog-container">
         <MainBlog data={data} />
       </div>
@@ -26,6 +25,7 @@ export const query = graphql`
         fluid(maxWidth: 1600, maxHeight: 800) {
           srcSet
           srcWebp
+          src
           aspectRatio
         }
       }
