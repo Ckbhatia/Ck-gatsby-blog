@@ -1,4 +1,4 @@
-import React, { useContext , useState} from "react";
+import React, { useContext} from "react";
 import { Link, graphql, useStaticQuery } from "gatsby";
 import Img from "gatsby-image";
 import Context from "../../context";
@@ -7,7 +7,7 @@ import "../../assets/main.scss";
 
 export default function Articles() {
   const { isDay } = useContext(Context);
-  const [showArticles , setShowArticles] = useState(6);
+  const showArticles = 6;
   
   const data = useStaticQuery(graphql`
     query {
@@ -34,7 +34,7 @@ export default function Articles() {
 
   const readMore = ()=>{
     
-    setShowArticles(showArticles+6);
+    showArticles = (showArticles+6);
 
   }
 
