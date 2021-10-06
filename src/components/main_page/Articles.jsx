@@ -83,20 +83,25 @@ export default function Articles() {
       
        {data.allContentfulBlogPost.edges.length > showArticles &&
         <div className="read-more text-center">
-        <button className="read-more-btn" onClick={()=>{readMore()}}
-        style={{padding: "1rem 15vw",
-          border: "none",
-          background: "white",
-          borderRadius: "2rem",
-          fontSize: "15px",
-          fontWeight: "500",
-          color: "#6565bb",
-          boxShadow: "0px 2px 5px 5px rgb(0 0 255 / 7%)"
-          }}>Read More</button>
+        <Button className="read-more-btn" onClick={()=>{readMore()}}>Read More</Button>
       </div>}
     </Div>
   );
 }
+
+const Button = styled.button`
+  padding: 1rem 15vw;
+  border: none;
+  background: white;
+  border-radius: 2rem;
+  font-size: 15px;
+  font-weight: 500;
+  color: #6565bb;
+  box-shadow: 0px 2px 5px 5px rgb(0 0 255 / 7%);
+  &:hover{
+    box-shadow: 0px 2px 5px 5px rgb(0 0 255 / 13%);
+  }
+`;
 
 const Div = styled.div`
   width: 100%;
