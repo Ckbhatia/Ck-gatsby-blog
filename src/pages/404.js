@@ -11,7 +11,7 @@ export default function PageNotFound() {
       <Layout>
         <Head title="404" />
         <Div className="page-not-found-main center-child">
-          <h1 className="page-not-found-heading">404 Page not found</h1>
+          <h1 className="page-not-found-heading">Oops, we could not find that page on this server.</h1>
         </Div>
       </Layout>
     </Mode>
