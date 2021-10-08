@@ -82,8 +82,10 @@ export default function Articles() {
       {/*Not showing read more if no more articles are left*/}
       
        {data.allContentfulBlogPost.edges.length > showArticles &&
-        <div className="read-more text-center">
-        <Button className="read-more-btn" onClick={()=>{readMore()}}>Read More</Button>
+        <div className="read-more text-center my-4">
+        <Button className={`read-more-btn-${
+          isDay ? "light" : "dark"
+        }`} onClick={()=>{readMore()}}>Read More</Button>
       </div>}
     </Div>
   );
@@ -92,15 +94,10 @@ export default function Articles() {
 const Button = styled.button`
   padding: 1rem 15vw;
   border: none;
-  background: white;
   border-radius: 2rem;
-  font-size: 15px;
-  font-weight: 500;
-  color: #6565bb;
-  box-shadow: 0px 2px 5px 5px rgb(0 0 255 / 7%);
-  &:hover{
-    box-shadow: 0px 2px 5px 5px rgb(0 0 255 / 13%);
-  }
+  font-size: 1.2rem;
+  font-weight: 500;  
+    
 `;
 
 const Div = styled.div`
