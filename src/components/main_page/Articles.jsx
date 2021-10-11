@@ -81,8 +81,8 @@ export default function Articles() {
       </ul>
       {/*Not showing read more if no more articles are left*/}
       
-       {data.allContentfulBlogPost.edges.length > showArticles &&
-        <div className="read-more text-center my-4">
+       {//data.allContentfulBlogPost.edges.length > showArticles &&
+        <div className="read-more text-center ">
         <Button className={`read-more-btn-${
           isDay ? "light" : "dark"
         }`} onClick={()=>{readMore()}}>Read More</Button>
@@ -97,6 +97,7 @@ const Button = styled.button`
   border-radius: 2rem;
   font-size: 1.2rem;
   font-weight: 500;  
+  margin: 4.3rem 5px;
     
 `;
 
