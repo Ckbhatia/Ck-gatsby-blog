@@ -27,6 +27,12 @@
 .post-social-share-container {
   grid-row-start: 2;
 }
+@media screen and (min-width: 768px) {
+  .post-social-share-container {
+    position: sticky;
+    top: 40%;
+  }
+}
 
 @media screen and (max-width: 768px) {
   .post-container {
