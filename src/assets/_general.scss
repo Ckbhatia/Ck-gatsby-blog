@@ -85,3 +85,22 @@
   // background-color: $background-secondary;
   background-color: #2a2731;
 }
+
+.read-more-btn-light{
+  background: white;
+  color: #627af1;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 255,0.07);
+  
+}
+.read-more-btn-light:hover{
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 255,0.10);
+}
+.read-more-btn-dark{
+  background: #f1f2fc;
+  color: #8189a9;
+  box-shadow: 0px 0px 5px 2px rgba(255, 255, 255,0.40);
+  
+}
+.read-more-btn-dark:hover{
+  box-shadow: 0px 0px 5px 2px rgba(255, 255, 255,0.55);
+}

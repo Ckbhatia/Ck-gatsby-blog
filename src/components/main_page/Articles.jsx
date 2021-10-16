@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext , useState} from "react";
 import { Link, graphql, useStaticQuery } from "gatsby";
 import Img from "gatsby-image";
 import Context from "../../context";
@@ -7,7 +7,8 @@ import "../../assets/main.scss";
 
 export default function Articles() {
   const { isDay } = useContext(Context);
-
+  const [showArticles , setShowArticles] = useState(6);
+  
   const data = useStaticQuery(graphql`
     query {
       allContentfulBlogPost(skip: 5, sort: { fields: published, order: DESC }) {
@@ -31,11 +32,15 @@ export default function Articles() {
     }
   `);
 
+  const readMore = ()=>{
+    setShowArticles(showArticles+6);
+  }
+
   return (
     <Div className="article-main-container">
       <ul className="article-list-container">
         {/* Get articles data dynamicaly */}
-        {data.allContentfulBlogPost.edges.map((edge, i) => {
+        {data.allContentfulBlogPost.edges.slice(0,showArticles).map((edge, i) => {
           return (
             <li key={i} className="article-item-container">
               <Link
@@ -74,9 +79,27 @@ export default function Articles() {
           );
         })}
       </ul>
+      {/*Not showing read more if no more articles are left*/}
+      
+       {//data.allContentfulBlogPost.edges.length > showArticles &&
+        <div className="read-more text-center ">
+        <Button className={`read-more-btn-${
+          isDay ? "light" : "dark"
+        }`} onClick={()=>{readMore()}}>Read More</Button>
+      </div>}
     </Div>
   );
 }
+
+const Button = styled.button`
+  padding: 1rem 15vw;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1.2rem;
+  font-weight: 500;  
+  margin: 4.3rem 5px;
+    
+`;
 
 const Div = styled.div`
   width: 100%;
