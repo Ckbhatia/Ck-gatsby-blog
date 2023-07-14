@@ -44,7 +44,8 @@ const MainBlog = ({ data }) => {
         {width >= 769 && (
           <Sidebar author={author} published={published} topic={topic} />
         )}
-        <Share author={author} topic={topic} />
+        {/* Note: temp not needed */}
+        {/* <Share author={author} topic={topic} /> */}
         <Post
           author={author}
           published={published}
