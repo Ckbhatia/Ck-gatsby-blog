@@ -1,6 +1,5 @@
 import React from "react";
 import Mode from "../components/Mode";
-import { Link } from "gatsby";
 import Head from "../components/Head";
 import Layout from "../components/Layout";
 import styled from "styled-components";

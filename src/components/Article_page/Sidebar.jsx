@@ -46,7 +46,8 @@ const Aside = styled.aside`
   display: grid;
   // grid-template-columns: 75%;
   grid-template-rows: 40px 80px;
-  margin: 14rem 0;
+  margin-top: 12rem;
+  margin-bottom: 1rem;
   .post-info-container {
     height: 100%;
     display: grid;

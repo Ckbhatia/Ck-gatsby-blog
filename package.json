@@ -33,7 +33,7 @@
     "gatsby-transformer-remark": "^2.8.37",
     "gh-pages": "^2.2.0",
     "jquery": "^3.4.1",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.14.1",
     "popper.js": "^1.15.0",
     "prismjs": "^1.21.0",
     "react": "^16.9.0",
